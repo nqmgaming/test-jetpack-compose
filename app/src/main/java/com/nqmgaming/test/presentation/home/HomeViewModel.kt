@@ -1,6 +1,5 @@
 package com.nqmgaming.test.presentation.home
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,17 +21,10 @@ class HomeViewModel @Inject constructor(
         getAllItems()
     }
 
-    fun getAllItems() {
+    private fun getAllItems() {
         viewModelScope.launch {
             items.value = appRepository.getAllItems()
         }
     }
 
-    fun deleteItem(item: Item) {
-        Log.d("HomeViewModel", "deleteItem: $item")
-        viewModelScope.launch {
-            appRepository.deleteItem(item.id ?: "")
-            getAllItems()
-        }
-    }
 }

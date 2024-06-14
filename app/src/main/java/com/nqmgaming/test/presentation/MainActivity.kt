@@ -6,16 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.nqmgaming.test.presentation.add_item.AddItemScreen
+import androidx.navigation.navArgument
+import com.nqmgaming.test.presentation.detail.AddItemScreen
 import com.nqmgaming.test.presentation.home.HomeScreen
 import com.nqmgaming.test.presentation.splash.SplashScreen
 import com.nqmgaming.test.presentation.utils.Screen
@@ -49,9 +47,22 @@ class MainActivity : ComponentActivity() {
                             HomeScreen(navController = navController)
                         }
                         composable(
-                            route = Screen.AddItem.route
+                            route = Screen.Detail.route + "/{itemId}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "itemId"
+                                ) {
+                                    type = NavType.IntType
+
+                                }
+                            )
                         ) {
-                            AddItemScreen(navController = navController)
+
+                            val itemId = it.arguments?.getInt("itemId")
+
+                            AddItemScreen(
+                                navController = navController,
+                            )
                         }
 
                     }

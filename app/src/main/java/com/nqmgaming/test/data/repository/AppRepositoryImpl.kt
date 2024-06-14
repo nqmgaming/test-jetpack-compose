@@ -23,7 +23,7 @@ class AppRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getItemById(id: String): Item {
+    override suspend fun getItemById(id: Int): Item {
         return try {
             appApi.getItemById(id).toDomain()
         } catch (e: Exception) {
@@ -32,20 +32,4 @@ class AppRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun insertItem(item: Item): Item {
-        return try {
-            appApi.createItem(item.toDto()).toDomain()
-        } catch (e: Exception) {
-            Log.d(TAG, "insertItem: ${e.message}")
-            Item()
-        }
-    }
-
-    override suspend fun deleteItem(id: String) {
-        try {
-            appApi.deleteItemById(id)
-        } catch (e: Exception) {
-            Log.d(TAG, "deleteItem: ${e.message}")
-        }
-    }
 }

@@ -23,27 +23,18 @@ fun AlertDialogComponent(
     onDismiss: () -> Unit,
     onConfirm: () -> Unit,
     text: @Composable () -> Unit,
-    isDelete: Boolean = false,
 ) {
     AlertDialog(
         icon = {
-            if (isDelete) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = stringResource(id = android.R.string.ok),
-                    tint = Color.Red
-                )
-            } else {
                 Icon(
                     imageVector = Icons.Default.Info,
                     contentDescription = stringResource(id = android.R.string.ok),
                     tint = Color.Blue
                 )
-            }
         },
         title = {
             Text(
-                text = if (isDelete) "Delete Item" else "Item Detail",
+                text = "Item Detail",
                 textAlign = TextAlign.Center
             )
         },
@@ -60,18 +51,9 @@ fun AlertDialogComponent(
                 }
             ) {
                 Text(
-                    text = if (isDelete) "Delete" else "Ok",
+                    text = "Ok",
                     color = Color.Black
                 )
-            }
-        },
-        dismissButton = {
-            TextButton(
-                onClick = {
-                    onDismiss()
-                }
-            ) {
-                Text("Cancel", color = Color.Red)
             }
         },
         containerColor = Color.White

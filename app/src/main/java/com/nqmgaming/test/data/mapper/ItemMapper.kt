@@ -5,16 +5,16 @@ import com.nqmgaming.test.domain.model.Item
 
 fun ItemDto.toDomain() = Item(
     id = id,
-    name = name,
-    price = price,
-    description = description,
-    status = status
+    albumId = albumId,
+    title = title,
+    url = url,
+    thumbnailUrl = thumbnailUrl
 )
 
 fun Item.toDto() = ItemDto(
     id = id,
-    name = name,
-    price = price,
-    description = description,
-    status = status
+    albumId = albumId,
+    title = title,
+    url = url,
+    thumbnailUrl = thumbnailUrl
 )

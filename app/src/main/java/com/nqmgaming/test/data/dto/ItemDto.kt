@@ -3,14 +3,14 @@ package com.nqmgaming.test.data.dto
 import com.google.gson.annotations.SerializedName
 
 data class ItemDto(
+    @SerializedName("albumId")
+    val albumId: Int? = null,
     @SerializedName("id")
-    val id: String? = null,
-    @SerializedName("name")
-    val name: String? = null,
-    @SerializedName("price")
-    val price: Double? = null,
-    @SerializedName("description")
-    val description: String? = null,
-    @SerializedName("status")
-    val status: Boolean? = null,
+    val id: Int? = null,
+    @SerializedName("title")
+    val title: String? = null,
+    @SerializedName("url")
+    val url: String? = null,
+    @SerializedName("thumbnailUrl")
+    val thumbnailUrl: String? = null,
 )
