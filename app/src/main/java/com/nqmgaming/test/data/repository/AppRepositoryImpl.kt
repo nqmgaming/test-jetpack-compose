@@ -41,6 +41,15 @@ class AppRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateItem(item: Item): Item {
+        return try {
+            appApi.updateItemById(item.ph31902Id!!, item.toDto()).toDomain()
+        } catch (e: Exception) {
+            Log.d(TAG, "updateItem: ${e.message}")
+            Item()
+        }
+    }
+
     override suspend fun deleteItem(id: String) {
         try {
             appApi.deleteItemById(id)

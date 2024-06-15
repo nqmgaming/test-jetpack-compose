@@ -4,7 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,22 +27,21 @@ fun SplashScreen(
     modifier: Modifier = Modifier,
     navController: NavController
 ) {
-    val scope = rememberCoroutineScope()
-    LaunchedEffect(key1 = true) {
-        scope.launch {
-            delay(2000)
+    Splash(
+        onNavigate = {
             navController.navigate(Screen.Home.route) {
                 popUpTo(Screen.Splash.route) {
                     inclusive = true
                 }
             }
         }
-    }
-    Splash()
+    )
 }
 
 @Composable
-private fun Splash() {
+private fun Splash(
+    onNavigate: () -> Unit = {}
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,5 +56,19 @@ private fun Splash() {
             text = "Nguyen Quang Minh",
             style = MaterialTheme.typography.titleLarge
         )
+        Text(
+            text = "PH31902",
+            style = MaterialTheme.typography.titleLarge
+        )
+        Text(
+            text = "15/06/2024",
+            style = MaterialTheme.typography.titleLarge
+        )
+        Button(
+            onClick = onNavigate,
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text(text = "Go to Home")
+        }
     }
 }

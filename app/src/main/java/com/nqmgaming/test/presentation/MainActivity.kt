@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nqmgaming.test.presentation.add_item.AddItemScreen
+import com.nqmgaming.test.presentation.edit_item.EditScreen
 import com.nqmgaming.test.presentation.home.HomeScreen
 import com.nqmgaming.test.presentation.splash.SplashScreen
 import com.nqmgaming.test.presentation.utils.Screen
@@ -52,6 +53,11 @@ class MainActivity : ComponentActivity() {
                             route = Screen.AddItem.route
                         ) {
                             AddItemScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.EditItem.route + "/{itemId}"
+                        ) {
+                            EditScreen(navController = navController)
                         }
 
                     }

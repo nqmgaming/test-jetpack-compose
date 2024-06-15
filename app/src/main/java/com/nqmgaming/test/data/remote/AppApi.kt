@@ -16,7 +16,7 @@ interface AppApi {
     @GET("cars/{id}")
     suspend fun getItemById(@Path("id") id: String): ItemDto
 
-    @POST("items")
+    @POST("cars")
     suspend fun createItem(
         @Body itemDto: ItemDto
     ): ItemDto

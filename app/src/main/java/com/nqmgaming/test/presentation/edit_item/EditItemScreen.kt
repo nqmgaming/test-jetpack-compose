@@ -1,4 +1,4 @@
-package com.nqmgaming.test.presentation.add_item
+package com.nqmgaming.test.presentation.edit_item
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
@@ -28,23 +28,22 @@ import com.nqmgaming.test.presentation.home.HomeViewModel
 import com.nqmgaming.test.presentation.utils.Screen
 
 @Composable
-fun AddItemScreen(
+fun EditScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: AddItemViewModel = hiltViewModel(),
+    viewModel: EditItemViewModel = hiltViewModel(),
     homeViewModel: HomeViewModel = hiltViewModel(),
 ) {
-
     val name by viewModel.itemName.collectAsState()
     val price by viewModel.price.collectAsState()
     val model by viewModel.model.collectAsState()
     val status by viewModel.status.collectAsState()
 
     val canNavigateUp by viewModel.canNavigateUp.collectAsState()
-    val itemAdded by viewModel.itemAdded.collectAsState()
+    val itemEdited by viewModel.itemEdited.collectAsState()
 
-    LaunchedEffect(key1 = itemAdded) {
-        if (itemAdded) {
+    LaunchedEffect(key1 = itemEdited) {
+        if (itemEdited) {
             homeViewModel.getAllItems()
         }
     }
@@ -58,29 +57,31 @@ fun AddItemScreen(
         }
     }
 
-    AddItem(
+    EditItem(
         modifier = modifier,
         name = name,
-        onChangeName = viewModel::onItemNameChange,
+        onChangeName = { viewModel.onItemNameChange(it) },
         price = price,
-        onChangePrice = viewModel::onPriceChange,
+        onChangePrice = { viewModel.onPriceChange(it) },
         description = model,
-        onChangeDescription = viewModel::onModelChange,
+        onChangeDescription = { viewModel.onModelChange(it) },
         status = status,
-        onChangeStatus = viewModel::onStatusChange,
+        onChangeStatus = { viewModel.onStatusChange(it) },
         onBack = {
             navController.navigateUp()
         },
         onSave = {
-            viewModel.insertItem()
+            viewModel.updateItem()
         }
     )
+
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-private fun AddItem(
+private fun EditItem(
     modifier: Modifier = Modifier,
     name: String,
     onChangeName: (String) -> Unit,
@@ -97,7 +98,7 @@ private fun AddItem(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = "Add car")
+                    Text(text = "Edit car")
                 },
                 actions = {
                     TextButton(
