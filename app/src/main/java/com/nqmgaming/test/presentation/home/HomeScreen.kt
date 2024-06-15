@@ -48,7 +48,7 @@ fun HomeScreen(
 
     Home(
         modifier = modifier.padding(horizontal = 16.dp),
-        items = items.reversed().sortedBy { it.status },
+        items = items.reversed().sortedBy { it.ph31902Status },
         onClick = {
             navController.navigate(Screen.AddItem.route)
         },
@@ -134,10 +134,10 @@ private fun Home(
                 },
                 text = {
                     Column {
-                        Text("Name: ${selectedItem?.name}")
-                        Text("Price: ${selectedItem?.price}")
-                        Text("Description: ${selectedItem?.description}")
-                        Text("Status: ${selectedItem?.status}")
+                        Text("Name: ${selectedItem?.ph31902Name}")
+                        Text("Price: ${selectedItem?.ph31902Price}")
+                        Text("Description: ${selectedItem?.ph31902Model}")
+                        Text("Status: ${selectedItem?.ph31902Status}")
                     }
                 },
                 isDelete = false

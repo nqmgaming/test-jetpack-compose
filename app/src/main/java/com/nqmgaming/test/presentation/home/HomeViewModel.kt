@@ -31,7 +31,7 @@ class HomeViewModel @Inject constructor(
     fun deleteItem(item: Item) {
         Log.d("HomeViewModel", "deleteItem: $item")
         viewModelScope.launch {
-            appRepository.deleteItem(item.id ?: "")
+            appRepository.deleteItem(item.ph31902Id ?: "")
             getAllItems()
         }
     }

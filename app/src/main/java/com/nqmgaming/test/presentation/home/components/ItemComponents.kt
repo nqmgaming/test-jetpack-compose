@@ -35,7 +35,7 @@ fun ItemComponent(
                 onClick = onClick
             ),
         colors = CardDefaults.cardColors(
-            containerColor = if (item.status == true) Color.White else Color.Gray
+            containerColor = if (item.ph31902Status == true) Color.White else Color.Gray
         )
     ) {
         Column(
@@ -44,19 +44,19 @@ fun ItemComponent(
                 .padding(5.dp)
         ) {
             Text(
-                text = "Name: ${item.name}", style = MaterialTheme.typography.titleMedium.copy(
+                text = "Name: ${item.ph31902Name}", style = MaterialTheme.typography.titleMedium.copy(
                     color = Color.Black,
                     fontWeight = FontWeight.SemiBold
                 )
             )
             Text(
-                text = "Price: ${item.price}", style = MaterialTheme.typography.bodyMedium.copy(
+                text = "Price: ${item.ph31902Price}", style = MaterialTheme.typography.bodyMedium.copy(
                     color = Color.Black,
                     fontWeight = FontWeight.Normal
                 )
             )
             Text(
-                text = "Description: ${item.description}",
+                text = "Description: ${item.ph31902Model}",
                 style = MaterialTheme.typography.bodyMedium.copy(
                     color = Color.Black,
                     fontWeight = FontWeight.Normal
@@ -65,7 +65,7 @@ fun ItemComponent(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = if (item.status == true) "Status: New" else "Status: Old",
+                text = if (item.ph31902Status == true) "Status: New" else "Status: Old",
                 style = MaterialTheme.typography.bodyMedium.copy(
                     color = Color.Black,
                     fontWeight = FontWeight.Normal

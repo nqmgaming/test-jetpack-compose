@@ -5,14 +5,15 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface AppApi {
 
-    @GET("items")
+    @GET("cars")
     suspend fun getItems(): List<ItemDto>
 
-    @GET("items/{id}")
+    @GET("cars/{id}")
     suspend fun getItemById(@Path("id") id: String): ItemDto
 
     @POST("items")
@@ -20,6 +21,12 @@ interface AppApi {
         @Body itemDto: ItemDto
     ): ItemDto
 
-    @DELETE("items/{id}")
+    @PUT("cars/{id}")
+    suspend fun updateItemById(
+        @Path("id") id: String,
+        @Body itemDto: ItemDto
+    ): ItemDto
+
+    @DELETE("cars/{id}")
     suspend fun deleteItemById(@Path("id") id: String)
 }

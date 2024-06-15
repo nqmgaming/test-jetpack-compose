@@ -4,17 +4,17 @@ import com.nqmgaming.test.data.dto.ItemDto
 import com.nqmgaming.test.domain.model.Item
 
 fun ItemDto.toDomain() = Item(
-    id = id,
-    name = name,
-    price = price,
-    description = description,
-    status = status
+    ph31902Id = ph31902Id,
+    ph31902Name = ph31902Name,
+    ph31902Price = ph31902Price,
+    ph31902Model = ph31902Model,
+    ph31902Status = ph31902Status
 )
 
 fun Item.toDto() = ItemDto(
-    id = id,
-    name = name,
-    price = price,
-    description = description,
-    status = status
+    ph31902Id = ph31902Id,
+    ph31902Name = ph31902Name,
+    ph31902Price = ph31902Price,
+    ph31902Model = ph31902Model,
+    ph31902Status = ph31902Status
 )

@@ -2,9 +2,9 @@ package com.nqmgaming.test.domain.model
 
 
 data class Item(
-    val id: String? = null,
-    val name: String? = null,
-    val price: Double? = null,
-    val description: String? = null,
-    val status: Boolean? = null
+    val ph31902Id: String? = null,
+    val ph31902Name: String? = null,
+    val ph31902Price: Double? = null,
+    val ph31902Model: String? = null,
+    val ph31902Status: Boolean? = null,
 )

@@ -25,7 +25,7 @@ class AddItemViewModel @Inject constructor(
     var price = MutableStateFlow<String>(value = "")
         private set
 
-    var description = MutableStateFlow<String>(value = "")
+    var model = MutableStateFlow<String>(value = "")
         private set
 
     var status = MutableStateFlow<Boolean>(value = false)
@@ -44,8 +44,8 @@ class AddItemViewModel @Inject constructor(
         this.price.update { price }
     }
 
-    fun onDescriptionChange(description: String) {
-        this.description.update { description }
+    fun onModelChange(model: String) {
+        this.model.update { model }
     }
 
     fun onStatusChange(status: Boolean) {
@@ -55,7 +55,7 @@ class AddItemViewModel @Inject constructor(
     fun insertItem() {
         val name = itemName.value
         val price = price.value
-        val description = description.value
+        val model = model.value
         val status = status.value
 
         if (name.isEmpty()) {
@@ -72,16 +72,16 @@ class AddItemViewModel @Inject constructor(
             return
         }
 
-        if (description.isEmpty()) {
-            toast("Description is required")
+        if (model.isEmpty()) {
+            toast("Model is required")
             return
         }
 
         val item = Item(
-            name = name,
-            price = price.toDouble(),
-            description = description,
-            status = status
+            ph31902Name = name,
+            ph31902Price = price.toDouble(),
+            ph31902Model = model,
+            ph31902Status = status
         )
         viewModelScope.launch {
             appRepository.insertItem(item)
@@ -102,7 +102,7 @@ class AddItemViewModel @Inject constructor(
     private fun resetFields() {
         itemName.value = ""
         price.value = ""
-        description.value = ""
+        model.value = ""
         status.value = false
     }
 

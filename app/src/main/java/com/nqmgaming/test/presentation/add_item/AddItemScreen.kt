@@ -37,7 +37,7 @@ fun AddItemScreen(
 
     val name by viewModel.itemName.collectAsState()
     val price by viewModel.price.collectAsState()
-    val description by viewModel.description.collectAsState()
+    val model by viewModel.model.collectAsState()
     val status by viewModel.status.collectAsState()
 
     val canNavigateUp by viewModel.canNavigateUp.collectAsState()
@@ -64,8 +64,8 @@ fun AddItemScreen(
         onChangeName = viewModel::onItemNameChange,
         price = price,
         onChangePrice = viewModel::onPriceChange,
-        description = description,
-        onChangeDescription = viewModel::onDescriptionChange,
+        description = model,
+        onChangeDescription = viewModel::onModelChange,
         status = status,
         onChangeStatus = viewModel::onStatusChange,
         onBack = {
@@ -144,7 +144,7 @@ private fun AddItem(
             TextFieldComponent(
                 value = description,
                 onValueChange = onChangeDescription,
-                placeholder = "Description",
+                placeholder = "Model",
                 keyboardType = KeyboardType.Text
             )
             Row(
